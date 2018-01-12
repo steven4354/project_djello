@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-//importing a custom function
+//importing a custom function to add some variety :)
 import getRandomInt from "../helpers/randomgenerator";
 
 //other components
@@ -18,7 +18,6 @@ class List extends Component {
     //the actual component
     return (
       <div class="board" id={`board${getRandomInt(3)}`}>
-        {/*^^ just to add some variety :)*/}
         <header>{listName}</header>
         <div class="cards" id="b1">
           <Card />
