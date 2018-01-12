@@ -152,3 +152,15 @@ body {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20);
 }
+
+.add-card-button {
+  display: block;
+  font-size: 0.9em;
+  padding: 10px;
+  color: #8c8c8c;
+  border: none;
+  background-color: transparent;
+}
+.add-card-button:hover {
+  cursor: pointer;
+}

@@ -13,18 +13,24 @@ class List extends Component {
 
   render() {
     //grabbing some props state for component usage
-    const {listName, cards} = this.props;
+    const {listName, cards, databaseId} = this.props;
 
     //the actual component
     return (
       <div class="board" id={`board${getRandomInt(3)}`}>
         <header>{listName}</header>
-        <div class="cards" id={listName}>
+        <div
+          class="cards"
+          id={listName}
+          listname={listName}
+          databaseidforthislist={databaseId}
+        >
           <Card />
 
           <Card />
 
           <Card />
+          <button class="add-card-button">Add Card</button>
         </div>
       </div>
     );

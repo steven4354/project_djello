@@ -27,11 +27,11 @@ class Board extends Component {
   componentDidMount() {
     // const {list} = this.props
     let sampleListProps = [
-      {listName: "On Hold", cards: []},
-      {listName: "In Progress", cards: []},
-      {listName: "Done", cards: []},
-      {listName: "Ideas", cards: []},
-      {listName: "Top Mentions :)", cards: []}
+      {databaseId: 1, listName: "On Hold", cards: []},
+      {databaseId: 2, listName: "In Progress", cards: []},
+      {databaseId: 3, listName: "Done", cards: []},
+      {databaseId: 4, listName: "Ideas", cards: []},
+      {databaseId: 5, listName: "Top Mentions :)", cards: []}
     ];
 
     let arrayOfToBeDraggableComponents = [];
@@ -40,19 +40,38 @@ class Board extends Component {
       arrayOfToBeDraggableComponents.push(listDOM);
     });
 
-    dragula(arrayOfToBeDraggableComponents).on("drop", function(el) {
-      console.log("drop event object =>");
-    });
+    dragula(arrayOfToBeDraggableComponents)
+      .on("drag", function(el) {
+        console.log("drag event object =>", el);
+      })
+      .on("drop", function(el) {
+        console.log("drop event object =>", el);
+      })
+      .on("over", function(el, container) {
+        //use this on to
+        //update the database when
+        //a card is dragged
+        //to trigger
+        //assign each card a listId
+        //and if it's over mathces card's listID -> meaning its the first drag over
+        //then no change yet
+        //but when not equal that menas its dragged
+        //and dropped then update the card's listId
+        //and dispatch action to api to update it as well
+        console.log("over event el =>", el);
+
+        console.log("over event container =>", container);
+      });
   }
 
   render() {
     // const {list} = this.props
     let sampleListProps = [
-      {listName: "On Hold", cards: []},
-      {listName: "In Progress", cards: []},
-      {listName: "Done", cards: []},
-      {listName: "Ideas", cards: []},
-      {listName: "Top Mentions :)", cards: []}
+      {databaseId: 1, listName: "On Hold", cards: []},
+      {databaseId: 2, listName: "In Progress", cards: []},
+      {databaseId: 3, listName: "Done", cards: []},
+      {databaseId: 4, listName: "Ideas", cards: []},
+      {databaseId: 5, listName: "Top Mentions :)", cards: []}
     ];
 
     //actual component
