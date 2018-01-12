@@ -75,15 +75,15 @@ body {
   border-radius: 3px 3px 0 0;
 }
 
-#board1 header {
+#board0 header {
   background-color: #bc3425;
   color: white;
 }
-#board2 header {
+#board1 header {
   background-color: #92549e;
   color: white;
 }
-#board3 header {
+#board2 header {
   background-color: #00b1cf;
   color: white;
 }
