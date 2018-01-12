@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App";
+import App from "./App";
+import "./index.css";
 
-import { createStore, applyMiddleware } from "redux";
-import { reducers } from "./reducers";
-import { Provider } from "react-redux";
+import {createStore, applyMiddleware} from "redux";
+import {reducers} from "./reducers";
+import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 
 let store = createStore(reducers, applyMiddleware(thunk));
