@@ -40,7 +40,9 @@ class Board extends Component {
       arrayOfToBeDraggableComponents.push(listDOM);
     });
 
-    dragula(arrayOfToBeDraggableComponents);
+    dragula(arrayOfToBeDraggableComponents).on("drop", function(el) {
+      console.log("drop event object =>");
+    });
   }
 
   render() {
