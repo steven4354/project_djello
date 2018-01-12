@@ -19,7 +19,7 @@ class List extends Component {
     return (
       <div class="board" id={`board${getRandomInt(3)}`}>
         <header>{listName}</header>
-        <div class="cards" id="b1">
+        <div class="cards" id={listName}>
           <Card />
 
           <Card />
