@@ -5,6 +5,18 @@ import "./Board.css";
 import List from "./List";
 
 class Board extends Component {
+  // example store data structure
+  // boards: [{boardName: "", lists: [{
+  //   listName: ""
+  //   cards: [{
+  //     cardName: ""
+  //     ...
+  //   }, {
+  //     cardName: ""
+  //     ...
+  //   }]
+  // }]},{boardName: "", }]
+
   render() {
     return (
       <div id="kaban">
@@ -13,24 +25,8 @@ class Board extends Component {
             <List listName="On Hold" />
             <List listName="In Progress" />
             <List listName="Done" />
-
-            <div class="board" id="board2">
-              <header>In Progress</header>
-              <div class="cards" id="b2">
-                <div class="card">
-                  <span class="cardtitle">A great card #5</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="board" id="board3">
-              <header>Done</header>
-              <div class="cards" id="b3">
-                <div class="card">
-                  <span class="cardtitle noselect">A great card #5</span>
-                </div>
-              </div>
-            </div>
+            <List listName="Ideas" />
+            <List listName="Top Mentions :)" />
           </div>
         </div>
       </div>
