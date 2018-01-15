@@ -11,7 +11,7 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from "reactstrap";
 
 class List extends Component {
   constructor(props) {
-    super();
+    super(props);
   }
 
   addCard(e) {
