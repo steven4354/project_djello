@@ -13,7 +13,7 @@ class List extends Component {
 
   render() {
     //grabbing some props state for component usage
-    const {listName, cards, databaseId} = this.props;
+    const {listName, cards, databaseListId} = this.props;
 
     //the actual component
     return (
@@ -23,13 +23,9 @@ class List extends Component {
           class="cards"
           id={listName}
           listname={listName}
-          databaseidforthislist={databaseId}
+          databaseidforthislist={databaseListId}
         >
-          <Card />
-
-          <Card />
-
-          <Card />
+          {cards.map(card => <Card name={card.name} cardid={card.id} />)}
           <button class="add-card-button">Add Card</button>
         </div>
       </div>

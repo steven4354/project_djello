@@ -4,7 +4,7 @@ class Card extends Component {
   render() {
     return (
       <div class="card">
-        <span class="cardtitle noselect">A great card #1</span>
+        <span class="cardtitle noselect">{this.props.name}</span>
       </div>
     );
   }

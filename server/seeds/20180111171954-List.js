@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -12,6 +12,26 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+    var lists = [];
+    for (let i = 0; i < 10; i++) {
+      lists.push({
+        name: `FooListksdkjfsdf`,
+        boardId: i + 1
+      });
+      lists.push({
+        name: `FooListlksdjflksdjf`,
+        boardId: i + 1
+      });
+      lists.push({
+        name: `FooListksdjflksjdf`,
+        boardId: i + 1
+      });
+      lists.push({
+        name: `FooListklsdjflksdjf`,
+        boardId: i + 1
+      });
+    }
+    return queryInterface.bulkInsert("Lists", lists);
   },
 
   down: (queryInterface, Sequelize) => {

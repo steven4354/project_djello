@@ -5,7 +5,7 @@ import "./App.css";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 //custom components and containers
-import Board from "./components/Board";
+import BoardContainer from "./containers/BoardContainer";
 import UserLogin from "./components/UserLogin";
 import UserRegistration from "./components/UserRegistration";
 
@@ -28,7 +28,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={UserLogin} />
             <Route exact path="/registration" component={UserRegistration} />
-            <Route exact path="/board" component={Board} />
+            <Route exact path="/board" component={BoardContainer} />
           </Switch>
         </div>
       </Router>

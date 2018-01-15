@@ -11,6 +11,7 @@ var sequelize = models.sequelize;
 // ----------------------------------------
 // Create User
 // ----------------------------------------
+
 router.post("/users", (req, res) => {
   console.log("req =>", req.body);
   let body = req.body;
@@ -32,6 +33,7 @@ router.post("/users", (req, res) => {
 // ----------------------------------------
 // Create Board
 // ----------------------------------------
+
 router.post("/users/:id/newboard", async (req, res) => {
   //chage to board
   try {
@@ -50,9 +52,41 @@ router.post("/users/:id/newboard", async (req, res) => {
 //curl -H 'Content-Type: application/json' -d '{"boardName":"xyz"}' http://localhost:3000/api/users/10/newboard
 
 // ----------------------------------------
+// Grab A Board
+// ----------------------------------------
+
+router.get("/boards/:id", async (req, res) => {
+  try {
+    const id = req.params.id; //listId
+
+    console.log("grab boards id params => ", id);
+
+    Board.findAll({
+      where: {id: id},
+      include: [
+        {
+          model: List,
+          include: [
+            {
+              model: Card
+            }
+          ]
+        }
+      ]
+    }).then(boards => {
+      res.json(boards[0]);
+    });
+  } catch (e) {
+    console.log("errror =>", e);
+  }
+});
+//just try this on the browser
+
+// ----------------------------------------
 // Create List
 // ----------------------------------------
-router.post("/board/:id/newlist", async (req, res) => {
+
+router.post("/boards/:id/newlist", async (req, res) => {
   //chage to list
   try {
     const id = req.params.id; //boardId
@@ -67,12 +101,13 @@ router.post("/board/:id/newlist", async (req, res) => {
     console.log("errror =>", e);
   }
 });
-//curl -H 'Content-Type: application/json' -d '{"listName":"xyz"}' http://localhost:3000/api/board/1/newlist
+//curl -H 'Content-Type: application/json' -d '{"listName":"xyz"}' http://localhost:3000/api/boards/1/newlist
 
 // ----------------------------------------
 // Create Cards
 // ----------------------------------------
-router.post("/list/:id/newcard", async (req, res) => {
+
+router.post("/lists/:id/newcard", async (req, res) => {
   //chage to cards
   try {
     const id = req.params.id; //listId
@@ -88,99 +123,6 @@ router.post("/list/:id/newcard", async (req, res) => {
     console.log("errror =>", e);
   }
 });
-//curl -H 'Content-Type: application/json' -d '{"cardName":"xyz", "cardBody": "kjsldkfjsdljfsdlkfj"}' http://localhost:3000/api/list/1/newCard
-
-// route test
-//replace body parser URL encoded with this: app.use(bodyParser.json());
-
-// ----------------------------------------
-// Index
-// ----------------------------------------
-// var onIndex = (req, res) => {
-//   User.findAll()
-//     .then(users => {
-//       res.render("users/index", { users });
-//     })
-//     .catch(e => res.status(500).send(e.stack));
-// };
-// router.get("/", onIndex);
-// router.get("/users", onIndex);
-
-// ----------------------------------------
-// New
-// ----------------------------------------
-// router.get("/users/new", (req, res) => {
-//   res.render("users/new");
-// });
-
-// ----------------------------------------
-// Edit
-// ----------------------------------------
-// router.get("/users/:id/edit", (req, res) => {
-//   User.findById(req.params.id)
-//     .then(user => {
-//       if (user) {
-//         res.render("users/edit", {user});
-//       } else {
-//         res.send(404);
-//       }
-//     })
-//     .catch(e => res.status(500).send(e.stack));
-// });
-
-// ----------------------------------------
-// Show
-// ----------------------------------------
-// router.get("/users/:id", (req, res) => {
-//   User.findById(req.params.id)
-//     .then(user => {
-//       if (user) {
-//         res.render("users/show", {user});
-//       } else {
-//         res.send(404);
-//       }
-//     })
-//     .catch(e => res.status(500).send(e.stack));
-// });
-
-// ----------------------------------------
-// Update
-// ----------------------------------------
-// router.put("/users/:id", (req, res) => {
-//   var userParams = req.body.user;
-//
-//   User.update(
-//     {
-//       fname: userParams.fname,
-//       lname: userParams.lname,
-//       username: userParams.username,
-//       email: userParams.email
-//     },
-//     {
-//       where: {id: req.params.id},
-//       limit: 1
-//     }
-//   )
-//     .then(() => {
-//       req.method = "GET";
-//       res.redirect(`/users/${req.params.id}`);
-//     })
-//     .catch(e => res.status(500).send(e.stack));
-// });
-
-// ----------------------------------------
-// Destroy
-// ----------------------------------------
-// router.delete("/users/:id", (req, res) => {
-//   User.destroy({
-//     where: {id: req.params.id},
-//     limit: 1
-//   })
-//     .then(() => {
-//       req.method = "GET";
-//       res.redirect("/users");
-//     })
-//     .catch(e => res.status(500).send(e.stack));
-// });
+//curl -H 'Content-Type: application/json' -d '{"cardName":"xyz", "cardBody": "kjsldkfjsdljfsdlkfj"}' http://localhost:3000/api/lists/1/newCard
 
 module.exports = router;
