@@ -1,34 +1,49 @@
 import React, {Component} from "react";
+import serialize from "form-serialize";
 
 class UserForm extends Component {
   register(e) {
-    // {"firstName":"xyz", "lastName": "ddk", "email": "skjdflkjsd@gmail.welcome", "password":"xyz"}
+    e.preventDefault();
 
     let form = document.querySelector("#example-form");
 
-    let obj serialize(form, {hash: true});
+    let obj = serialize(form, {hash: true});
     // obj -> { foo: 'bar' }
 
-    // fetch("/api/users", {
-    //   method: "post",
-    //   body: JSON.stringify(opts)
-    // });
-
     console.log("obj =>", obj);
+
+    //set this up at the end after boards
+
+    // fetch("api/users", {
+    //   method: "POST",
+    //   body: JSON.stringify(obj),
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   }
+    // })
+    //   .then(function(response) {
+    //     // The response is a Response instance.
+    //     // You parse the data into a useable format using `.json()`
+    //     return response.json();
+    //   })
+    //   .then(function(data) {
+    //     // `data` is the parsed version of the JSON returned from the above endpoint.
+    //     console.log("response data =>", data); // { "userId": 1, "id": 1, "title": "...", "body": "..." }
+    //   });
   }
 
   render() {
     return (
       <div
-        class="modal fade"
+        className="modal fade"
         id="login-modal"
         tabindex="-1"
         role="dialog"
         aria-labelledby="myModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
-          <div class="loginmodal-container">
+        <div className="modal-dialog">
+          <div className="loginmodal-container">
             <h1 style={{color: "black"}}>Register For An Account</h1>
             <br />
             <form onSubmit={this.register} id="example-form">
@@ -37,12 +52,12 @@ class UserForm extends Component {
               <input
                 type="submit"
                 name="register"
-                class="login loginmodal-submit"
+                className="login loginmodal-submit"
                 value="register"
               />
             </form>
 
-            <div class="login-help">
+            <div className="login-help">
               <a href="/">Login</a> - <a href="#">Forgot Password</a>
             </div>
           </div>

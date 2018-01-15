@@ -8,15 +8,15 @@ class UserForm extends Component {
   render() {
     return (
       <div
-        class="modal fade"
+        className="modal fade"
         id="login-modal"
         tabindex="-1"
         role="dialog"
         aria-labelledby="myModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
-          <div class="loginmodal-container">
+        <div className="modal-dialog">
+          <div className="loginmodal-container">
             <h1 style={{color: "black"}}>Login to Your Account</h1>
             <br />
             <form>
@@ -25,12 +25,12 @@ class UserForm extends Component {
               <input
                 type="submit"
                 name="login"
-                class="login loginmodal-submit"
+                className="login loginmodal-submit"
                 value="Login"
               />
             </form>
 
-            <div class="login-help">
+            <div className="login-help">
               <a href="/registration">Register</a> -{" "}
               <a href="#">Forgot Password</a>
             </div>
