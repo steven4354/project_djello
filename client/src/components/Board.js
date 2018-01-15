@@ -4,39 +4,23 @@ import "./Board.css";
 //other components
 import List from "./List";
 
-//imports for dragging functionality
-import dragula from "react-dragula";
-
 class Board extends Component {
   constructor(props) {
     super();
   }
 
-  componentDidMount() {
-    this.props._getBoard(1);
-  }
-
   render() {
-    // const {list} = this.props
-    let sampleListProps = [
-      {databaseId: 1, listName: "On Hold", cards: []},
-      {databaseId: 2, listName: "In Progress", cards: []},
-      {databaseId: 3, listName: "Done", cards: []},
-      {databaseId: 4, listName: "Ideas", cards: []},
-      {databaseId: 5, listName: "Top Mentions :)", cards: []}
-    ];
-
     let {isFetching} = this.props;
     let lists = this.props._board.Lists;
 
     //actual component
     return (
       <div>
-        {!isFetching && this.props._board.Lists ? (
+        {!isFetching && lists ? (
           <div id="kaban">
             <div id="scroller">
               <div id="boards">
-                {this.props._board.Lists.map(list => {
+                {lists.map(list => {
                   return (
                     <List
                       listName={list.name}

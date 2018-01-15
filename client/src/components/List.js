@@ -6,9 +6,17 @@ import getRandomInt from "../helpers/randomgenerator";
 //other components
 import Card from "./Card";
 
+//getting some bootstrap4 components
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from "reactstrap";
+
 class List extends Component {
   constructor(props) {
     super();
+  }
+
+  addCard(e) {
+    e.preventDefault();
+    console.log("e.target.value for addCard =>", e.target.value);
   }
 
   render() {
@@ -26,7 +34,13 @@ class List extends Component {
           databaseidforthislist={databaseListId}
         >
           {cards.map(card => <Card name={card.name} cardid={card.id} />)}
-          <button class="add-card-button">Add Card</button>
+          <button
+            value={databaseListId}
+            onClick={this.addCard}
+            class="add-card-button"
+          >
+            Add Card
+          </button>
         </div>
       </div>
     );
