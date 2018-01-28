@@ -15,6 +15,16 @@ To Be Added Features
 * Option to assign specific team members to a card
 * Cards to show the activity (if it was moved from another list, updates, text rewritten)
 
+## Running on your local machine
+
+Install node package manager (npm) from https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm
+
+Cd into the server folder and run npm start 
+
+Cd into the client folder and run npm start 
+
+Go to localhost:3001/board
+
 ## Demo
 
 Current progress demo pics:
